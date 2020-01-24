@@ -7,7 +7,7 @@
         $col = 'movies_id';
 
 
-        $getMovies = getSingleMovie($movie_table, $col, $id);
+        $getMovie = getSingleMovie($movie_table, $col, $id);
 
         //testing code
         //var_dump($getMovies);
@@ -30,7 +30,7 @@
 <body>
 <?php include 'templates/header.php';?>
 
-<?php while($row = $getMovies->fetch(PDO::FETCH_ASSOC)):?>
+<?php while($row = $getMovie->fetch(PDO::FETCH_ASSOC)):?>
 <div class="movie_item">
     <img src="images/<?php echo $row['movies_cover'];?>" alt="<?php echo $row['movies_title'];?>"/>
     <h2><?php echo $row['movies_title'];?></h2>
