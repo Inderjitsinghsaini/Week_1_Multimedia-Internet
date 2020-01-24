@@ -1,31 +1,19 @@
 <?php
-        require_once 'load.php';
-       if(isset($_GET['filter'])){
-           $args = array(
-               'tbl'=>'tbl_movies',
-               'tbl2'=>'tbl_genre',
-               'tbl3'=>'tbl_mov_genre',
-               'col'=>'movies_id',
-               'col2'=>'genre_id',
-               'col3'=>'genre_name',
-               'filter'=>$_GET['filter']
-
-
-
-
-       );
-           $getMovies = getMoviesByFilter($args);
-
-       }
-       else{
-
+   require_once 'load.php';
+    
+    if(isset($_GET['id'])){
         $movie_table = 'tbl_movies';
-        $getMovies = getAll($movie_table);
-       }
+        $id = $_GET['id'];
+        $col = 'movies_id';
+
+
+        $getMovies = getSingleMovie($movie_table, $col, $id);
 
         //testing code
         //var_dump($getMovies);
       //exit;
+    }
+
 
 ?>
 
@@ -42,13 +30,11 @@
 <body>
 <?php include 'templates/header.php';?>
 
-
 <?php while($row = $getMovies->fetch(PDO::FETCH_ASSOC)):?>
 <div class="movie_item">
     <img src="images/<?php echo $row['movies_cover'];?>" alt="<?php echo $row['movies_title'];?>"/>
     <h2><?php echo $row['movies_title'];?></h2>
     <h2><?php echo $row['movies_year'];?></h2>
-    <a href = "details.php?id=<?php echo $row['movies_id'];?>">Read more...</a>
 
         </div>
 <?php endwhile; ?>  
