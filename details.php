@@ -35,7 +35,9 @@
     <img src="images/<?php echo $row['movies_cover'];?>" alt="<?php echo $row['movies_title'];?>"/>
     <h2><?php echo $row['movies_title'];?></h2>
     <h2><?php echo $row['movies_year'];?></h2>
-
+    <h2><?php echo $row['movies_runtime'];?></h2>
+    <h2><?php echo $row['movies_storyline'];?></h2>
+    <h2><?php echo $row['movies_release'];?></h2>
         </div>
 <?php endwhile; ?>  
 <?php include 'templates/footer.php';?>  
