@@ -1,6 +1,6 @@
 <?php
-    include 'load.php';
-    
+    require_once 'load.php';
+
     if(isset($_GET['filter'])){
         $args = array(
             'tbl' => 'tbl_movies',
@@ -11,8 +11,9 @@
             'col3' => 'genre_name',
             'filter' => $_GET['filter']
         );
+
         $getMovies = getMoviesByFilter($args);
-    } else {
+    }else{
         $movie_table = 'tbl_movies';
         $getMovies = getAll($movie_table);
     }
@@ -24,18 +25,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Movies CMS</title>
+    <title>Welcome to the Movie CMS!</title>
 </head>
 <body>
-    <?php include 'templates/header.php'; ?>
-    <?php while($row = $getMovies->fetch(PDO::FETCH_ASSOC)): ?>
-    <div class="movie-item">
-        <img src="images/<?php echo $row['movies_cover']; ?>" alt="<?php echo $row['movies_title']; ?>">
-        <h2><?php echo $row['movies_title']; ?></h2>
-        <h4><?php echo $row['movies_year']; ?></h4>
-        <a href="details.php?id=<?php echo $row['movies_id']; ?>">read more</a>
-    </div>
-    <?php endwhile; ?>
-    <?php include 'templates/footer.php'; ?>
+    <?php include 'templates/header.php' ?>
+
+    <?php while($row = $getMovies->fetch(PDO::FETCH_ASSOC)):?>
+        <div class="movie-item">
+            <img src="images/<?php echo $row['movies_cover'];?>" alt="<?php echo $row['movies_title'];?>"/>
+            <h2><?php echo $row['movies_title']; ?></h2>
+            <h4><?php echo $row['movies_year']; ?></h4>
+            <a href="details.php?id=<?php echo $row['movies_id'];?>">Read More</a>
+        </div>
+    <?php endwhile;?>
+
+    <?php include 'templates/footer.php' ?>
 </body>
 </html>

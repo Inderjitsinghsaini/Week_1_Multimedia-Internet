@@ -1,3 +1,7 @@
+#### Alec's NOTE
+WEEK TWO (THREE)
+All of the files are already in my www folder, this is a backup and a week by week progress checker
+
 #### PHP Movie Review
 This is the Docker environment set up for Movie Review
 

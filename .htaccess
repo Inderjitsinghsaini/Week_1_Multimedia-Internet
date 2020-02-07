@@ -1,10 +1,7 @@
 ## Deny access
 <FilesMatch "\.?htaccess$>
     deny from all
-    </FilesMatch>
+</FilesMatch>
 
-
-    ## Redirect User
-
-
-    Redirect 301 /movies_cms/load.php /movies_cms
+## Redirect user
+Redirect 301 /movies_cms/load.php /movies_cms 

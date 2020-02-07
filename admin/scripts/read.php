@@ -8,42 +8,47 @@ function getAll($tbl){
         if($results){
             return $results;
         }else{
-            return 'There is a problem in returning the info';
+            return 'There was a problem accessing this info';
         }
-        };
+    };
 
-        function getSingleMovie($tbl, $col, $id){
-            $pdo = Database::getInstance()->getConnection();
+function getSingleMovie($tbl, $col, $id){
+    //TODO: refer the function above to finish this one
+    //make sure it return only one movie that filtered by $col = $id
 
-            $queryAll = 'SELECT * FROM ' . $tbl .' WHERE '.$col.' = '.$id;
+    $pdo = Database::getInstance()->getConnection();
 
-            $results = $pdo->query($queryAll);
+    $queryAll = 'SELECT * FROM '.$tbl .' WHERE '.$col.' = '.$id ;
 
-            if($results){
-                return $results;
-            }
-            else{
-                return 'there was a problem in accesing the info';
-            }
+    // $queryAll = "SELECT * FROM $tbl WHERE $col = $id";
+    $results = $pdo->query($queryAll);
 
-        }
-        function getMoviesByFilter($args){
-            $pdo = Database::getInstance()->getConnection();
-        
-            $queryAll = 'SELECT * FROM ' . $args['tbl'] . ' AS t, ';
-            $queryAll .= ' ' . $args['tbl2'] . ' AS t2,';
-            $queryAll .= ' ' . $args['tbl3'] . ' AS t3 ';
-            $queryAll .= ' WHERE t.' . $args['col'] . ' = t3.' .$args['col'];
-            $queryAll .= ' AND t2.' . $args['col2'] . ' = t3.' .$args['col2'];
-            $queryAll .= ' AND t2.' . $args['col3'] . ' = "' .$args['filter']. '"';
-        
-        
-            $results = $pdo->query($queryAll);
-        
-            if($results){
-                return $results;
-            } else {
-                return 'There was a problem in accessing the info';
-            }
-        }
-?>
+    if($results){
+        return $results;
+    }else{
+        return 'There was a problem accessing this info';
+    }
+}
+
+function getMoviesByFilter($args){
+    $pdo = Database::getInstance()->getConnection();
+
+    $queryAll = 'SELECT * FROM '. $args['tbl'].' AS t,';
+    $queryAll .= ' '. $args['tbl2'].' AS t2,';
+    $queryAll .= ' '. $args['tbl3'].' AS t3';
+    $queryAll .= ' WHERE t.'. $args['col'].' = t3.'.$args['col'];
+    $queryAll .= ' AND t2.'. $args['col2'].' = t3.'.$args['col2'];
+    $queryAll .= ' AND t2.'. $args['col3'].' = "'.$args['filter'].'"';
+
+    // echo $queryAll;
+    // exit;
+
+
+    $results = $pdo->query($queryAll);
+
+    if($results){
+        return $results;
+    }else{
+        return 'There was a problem accessing this info';
+    }
+}

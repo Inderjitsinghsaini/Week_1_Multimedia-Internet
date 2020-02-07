@@ -45,12 +45,13 @@ class Database
         if(!self::$instance){
             self::$instance = new Database();
         }
+
         return self::$instance;
     }
 
     // get the database connection
     public function getConnection()
     {
-       return $this->conn;
+        return $this->conn;
     }
 }
